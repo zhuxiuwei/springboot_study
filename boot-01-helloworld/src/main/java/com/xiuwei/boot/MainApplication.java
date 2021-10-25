@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 /**
- * 主程序类
+ * 主程序类， 主配置类
  * @SpringBootApplication： 这是一个SpringBoot应用
  */
 @SpringBootApplication
@@ -56,6 +56,15 @@ public class MainApplication {
         Pet pet = run.getBean(Pet.class);
         System.out.println("依赖引用：" + (pet == u1.getPet()));
 
-
+        //测试@Import标签
+        String[] beanNamesForType = run.getBeanNamesForType(User.class);
+        for (String s : beanNamesForType) {
+            System.out.println(s);
+            /**
+             * 结果：
+             * com.xiuwei.boot.bean.User  -- ！！为MyConfig.java的@Import({User.class, DBHelper.class})标签注入的
+             * user01  -- MyConfig里@Bean标签注入的
+             */
+        }
     }
 }
