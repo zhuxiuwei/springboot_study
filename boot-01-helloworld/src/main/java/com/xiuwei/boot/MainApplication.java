@@ -53,7 +53,7 @@ public class MainApplication {
          * MyConfig.java, @Configuration(proxyBeanMethods = true): true。因为此时，springboot总会检查这个组件容器中是否已有。即总会保持单实例。
          * MyConfig.java, @Configuration(proxyBeanMethods = false): false
          */
-        Pet pet = run.getBean(Pet.class);
+        Pet pet = run.getBean("tomcatPet", Pet.class);
         System.out.println("依赖引用：" + (pet == u1.getPet()));
 
         //测试@Import标签
@@ -66,5 +66,8 @@ public class MainApplication {
              * user01  -- MyConfig里@Bean标签注入的
              */
         }
+
+        //测试ConditionalOnMissingBean标签
+        System.out.println(run.containsBean("conditionPet")); //false。不满足条件bean未创建。
     }
 }

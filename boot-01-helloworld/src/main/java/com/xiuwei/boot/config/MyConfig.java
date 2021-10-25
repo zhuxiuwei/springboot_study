@@ -3,6 +3,8 @@ package com.xiuwei.boot.config;
 import ch.qos.logback.core.db.DBHelper;
 import com.xiuwei.boot.bean.Pet;
 import com.xiuwei.boot.bean.User;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -31,5 +33,12 @@ public class MyConfig {
     @Bean
     public Pet tomcatPet(){
         return new Pet("tom cat");
+    }
+
+    //Conditional标签测试：ConditionalOnBean - 名字NOT_EXIST的bean存在时，才创建名字为conditionPetTomcat的Pet。
+    @Bean
+    @ConditionalOnBean(name = "NOT_EXIST")
+    public Pet conditionPet(){
+        return new Pet("conditionPetTomcat");
     }
 }
