@@ -1,10 +1,12 @@
 package com.xiuwei.boot.config;
 
 import ch.qos.logback.core.db.DBHelper;
+import com.xiuwei.boot.bean.Car2;
 import com.xiuwei.boot.bean.Pet;
 import com.xiuwei.boot.bean.User;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -23,6 +25,7 @@ import org.springframework.context.annotation.ImportResource;
 @Import({User.class, DBHelper.class})
 @Configuration(proxyBeanMethods = true) //告诉springboot这是一个配置类，可以省略xml文件了。
 @ImportResource("classpath:beans.xml")
+@EnableConfigurationProperties(Car2.class)  //1. 开启Car2配置绑定功能 2.把Car2自动注册到容器中。
 public class MyConfig {
 
     @Bean   //方法名为组件id，返回类型为组件类型。返回值就是组件在容器中的实例

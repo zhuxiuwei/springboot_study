@@ -4,11 +4,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * 注意必须有“@Component”。 只有在容器中的组件，才会拥有SpringBoot提供的强大功能
+ * 方案2： 在配置类MyConfig.java里，用@EnableConfigurationProperties(Car2.class)，1. 开启Car2配置绑定功能 2.把Car2自动注册到容器中。
+ * 注意没有@Component”。 模拟当Car2是个第三方组件，我们没法添加@Component标签时。
  */
-@Component
 @ConfigurationProperties(prefix = "mycar")
-public class Car {
+public class Car2 {
 
     private String brand;
     private Integer price;

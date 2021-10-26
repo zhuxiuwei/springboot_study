@@ -1,6 +1,7 @@
 package com.xiuwei.boot.controller;
 
 import com.xiuwei.boot.bean.Car;
+import com.xiuwei.boot.bean.Car2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,8 @@ public class HelloController {
 
     @Autowired
     private Car car;
+    @Autowired
+    private Car2 car2;
 
     @RequestMapping("/hello")
     public String hello(){
@@ -26,4 +29,8 @@ public class HelloController {
         return car;
     }
 
+    @RequestMapping("/car2")
+    public Car2 car2(){
+        return car2;
+    }
 }
