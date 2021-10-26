@@ -69,5 +69,9 @@ public class MainApplication {
 
         //测试ConditionalOnMissingBean标签
         System.out.println(run.containsBean("conditionPet")); //false。不满足条件bean未创建。
+
+        //测试@ImportResource标签
+        //MyConfig.java里配置了：@ImportResource("classpath:beans.xml")
+        System.out.println(run.containsBean("haha"));   //true
     }
 }
