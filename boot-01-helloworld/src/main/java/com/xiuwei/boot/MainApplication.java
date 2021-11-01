@@ -4,16 +4,15 @@ import com.xiuwei.boot.bean.Pet;
 import com.xiuwei.boot.bean.User;
 import com.xiuwei.boot.config.MyConfig;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 
 /**
  * 主程序类， 主配置类
- * @SpringBootApplication： 这是一个SpringBoot应用
+ * @SpringBootApplication： 这是一个SpringBoot应用，等价于：
+     @SpringBootConfiguration
+     @EnableAutoConfiguration
+     @ComponentScan("com.atguigu.boot")
  */
 @SpringBootApplication
 public class MainApplication {
