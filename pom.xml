@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>boot-01-helloworld</module>
+        <module>boot-02-helloworld2</module>
     </modules>
 
     <parent>
