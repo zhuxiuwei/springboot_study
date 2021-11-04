@@ -19,12 +19,32 @@
         <version>2.5.5</version>
     </parent>
 
+    <dependencies>
+        <!-- yaml配置文件支持自动提示 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
     <!-- 可以打包成可执行jars java -jar xxx.jar，即可运行。 -->
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- spring-boot-configuration-processor不打包到fat jar
+                        因为这个插件只是帮助开发，对业务无帮助，打到包里会导致无用类更多了。
+                     -->
+                    <excludes>
+                        <exclude>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-configuration-processor</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </build>

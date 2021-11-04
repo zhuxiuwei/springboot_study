@@ -5,7 +5,6 @@ person:
   # 加单引号： json: "userName":"zhang \\n san"， 控制台： zhang \n san
   # 加双引号： json: "userName":"zhang \n san"， 控制台： zhang *换行* san
   # 即： 双引号不会转义（执行\n）， 单引号会转义（不执行\n，把\n变成\\n）
-  boss: false
   birth: 2019/12/12 20:12:33
   age: 18
   interests: [篮球,游泳]
@@ -28,3 +27,4 @@ person:
       - {name: tom}
       - {name: jerry,weight: 47}
     health: [{name: mario,weight: 47}]
+  boss: false
