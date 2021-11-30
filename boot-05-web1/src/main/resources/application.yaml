@@ -1,0 +1,4 @@
+# 静态资源访问地址加前缀。 访问静态资源变成：http://localhost:8080/jingtai_prefix/1.jpeg
+      spring:
+        mvc:
+          static-path-pattern: /jingtai_prefix/**
