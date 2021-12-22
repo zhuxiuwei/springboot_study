@@ -1,8 +1,15 @@
 package com.xiuwei.boot.controller;
 
+import com.xiuwei.boot.bean.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.thymeleaf.util.StringUtils;
+
+import javax.servlet.http.HttpSession;
+import java.rmi.MarshalledObject;
 
 @Controller
 public class IndexController {
@@ -14,6 +21,29 @@ public class IndexController {
     @GetMapping(value = {"/", "/login"})
     public String loginPage(){
         return "login";
+    }
+
+    //登录去主页
+    @PostMapping("/login")
+    public String main(User user, HttpSession session, Model model){
+
+        if(!StringUtils.isEmpty(user.getUserName()) && !StringUtils.isEmpty(user.getPassword())){
+            //把登录成功的用户保存到Session
+            session.setAttribute("loginUser", user);
+            //登录成功，重定向到main页面。用重定向，避免表单重复提交。
+            return "redirect:/main.html";
+        }else {
+            model.addAttribute("msg", "账号密码错误!");
+            //回退到登录页
+            return "login";
+        }
+
+    }
+
+    //去main页面
+    @GetMapping("/main.html")
+    public String mainPage(String username, String password){
+        return "main";
     }
 
 
