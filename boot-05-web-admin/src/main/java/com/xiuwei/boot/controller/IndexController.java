@@ -27,6 +27,7 @@ public class IndexController {
     @PostMapping("/login")
     public String main(User user, HttpSession session, Model model){
 
+        //判断账号密码
         if(!StringUtils.isEmpty(user.getUserName()) && !StringUtils.isEmpty(user.getPassword())){
             //把登录成功的用户保存到Session
             session.setAttribute("loginUser", user);
@@ -42,8 +43,18 @@ public class IndexController {
 
     //去main页面
     @GetMapping("/main.html")
-    public String mainPage(String username, String password){
-        return "main";
+    public String mainPage(HttpSession session, Model model){
+
+        //是否登录。
+        //TODO: 后续改成拦截器、过滤器
+        if(session.getAttribute("loginUser") != null){
+            return "main";
+        }
+        else {
+            model.addAttribute("msg", "请登录!");
+            return "login";
+        }
+
     }
 
 
