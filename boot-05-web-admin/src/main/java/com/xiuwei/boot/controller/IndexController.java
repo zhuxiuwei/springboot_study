@@ -1,6 +1,9 @@
 package com.xiuwei.boot.controller;
 
 import com.xiuwei.boot.bean.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +16,9 @@ import java.rmi.MarshalledObject;
 
 @Controller
 public class IndexController {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     /**
      * 来登录页
@@ -57,5 +63,13 @@ public class IndexController {
 
     }
 
+    //随便执行一个sql。用于数据库测试。
+    @ResponseBody
+    @GetMapping("/sql")
+    public String testSql(){
+        System.out.println(1111);
+        Long aLong = jdbcTemplate.queryForObject("select count(*) from tbl_employee", Long.class);
+        return aLong + "";
+    }
 
 }
