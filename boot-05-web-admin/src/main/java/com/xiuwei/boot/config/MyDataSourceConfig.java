@@ -13,7 +13,7 @@ import java.sql.SQLException;
 /**
  * #61 自定义配置druid数据源
  */
-@Configuration
+//@Configuration    //因为#62讲了starter方式配置，所以这里自定义配置的注释掉了。
 public class MyDataSourceConfig {
 
     //自定义
