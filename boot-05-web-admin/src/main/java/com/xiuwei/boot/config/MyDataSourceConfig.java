@@ -29,9 +29,10 @@ public class MyDataSourceConfig {
 //        druidDataSource.setDriverClassName();
         /**
          * 开启druid监控统计，执行sql后访问http://localhost:8080/druid/sql.html可以看执行sql统计信息。
+         * 配置durid防火墙
          * 官网：https://github.com/alibaba/druid/wiki/%E9%85%8D%E7%BD%AE_StatFilter
          */
-        druidDataSource.setFilters("stat");
+        druidDataSource.setFilters("stat,wall"); //！！！注意因为有 @ConfigurationProperties注解，这俩配置也可以写到spring配置文件里。
         return druidDataSource;
     }
 
@@ -41,9 +42,13 @@ public class MyDataSourceConfig {
      * 官网：https://github.com/alibaba/druid/wiki/%E9%85%8D%E7%BD%AE_StatViewServlet%E9%85%8D%E7%BD%AE
      */
     @Bean
-    public ServletRegistrationBean dsda(){
+    public ServletRegistrationBean statViewServlet(){
         StatViewServlet statViewServlet = new StatViewServlet();
         ServletRegistrationBean res = new ServletRegistrationBean(statViewServlet, "/druid/*");
+
+        //配置druid管理页用户密码，官网：https://github.com/alibaba/druid/wiki/%E9%85%8D%E7%BD%AE_StatViewServlet%E9%85%8D%E7%BD%AE#12-%E9%85%8D%E7%BD%AE%E7%9B%91%E6%8E%A7%E9%A1%B5%E9%9D%A2%E8%AE%BF%E9%97%AE%E5%AF%86%E7%A0%81
+//        res.addInitParameter("loginUsername","admin");
+//        res.addInitParameter("loginPassword","123456");
         return res;
     }
 
