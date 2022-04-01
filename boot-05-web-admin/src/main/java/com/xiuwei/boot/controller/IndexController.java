@@ -2,7 +2,6 @@ package com.xiuwei.boot.controller;
 
 import com.xiuwei.boot.bean.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpSession;
-import java.rmi.MarshalledObject;
 
 @Controller
 public class IndexController {
@@ -67,7 +65,6 @@ public class IndexController {
     @ResponseBody
     @GetMapping("/sql")
     public String testSql(){
-        System.out.println(1111);
         Long aLong = jdbcTemplate.queryForObject("select count(*) from tbl_employee", Long.class);
         return aLong + "";
     }
