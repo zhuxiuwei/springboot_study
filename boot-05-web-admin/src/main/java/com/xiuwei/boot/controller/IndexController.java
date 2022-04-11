@@ -1,7 +1,9 @@
 package com.xiuwei.boot.controller;
 
+import com.xiuwei.boot.bean.City;
 import com.xiuwei.boot.bean.Department;
 import com.xiuwei.boot.bean.User;
+import com.xiuwei.boot.service.CityService;
 import com.xiuwei.boot.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,6 +25,9 @@ public class IndexController {
 
     @Autowired
     private DepartmentService departmentService;
+
+    @Autowired
+    private CityService cityService;
 
     /**
      * 来登录页
@@ -75,11 +80,18 @@ public class IndexController {
         return aLong + "";
     }
 
-    //#63 mybatis测试
+    //#63 mybatis测试 - 配置版
     @ResponseBody
     @GetMapping("/dept")
     public Department getById(@RequestParam("id") Integer id){
         return departmentService.getDeptById(id);
+    }
+
+    //#64 mybatis测试 - 注解版
+    @ResponseBody
+    @GetMapping("/city")
+    public City getCityById(@RequestParam("id") Long id){
+        return cityService.getById(id);
     }
 
 }

@@ -2,14 +2,14 @@ package com.xiuwei.boot.bean;
 
 public class Department {
     private Integer id;
-    private String departmentName;
+    private String deptName;
 
     public Department() {
     }
 
-    public Department(Integer id, String departmentName) {
+    public Department(Integer id, String deptName) {
         this.id = id;
-        this.departmentName = departmentName;
+        this.deptName = deptName;
     }
 
     public Integer getId() {
@@ -21,18 +21,18 @@ public class Department {
     }
 
     public String getDepartmentName() {
-        return departmentName;
+        return deptName;
     }
 
     public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
+        this.deptName = departmentName;
     }
 
     @Override
     public String toString() {
         return "Department{" +
                 "id=" + id +
-                ", departmentName='" + departmentName + '\'' +
+                ", deptName='" + deptName + '\'' +
                 '}';
     }
 }
