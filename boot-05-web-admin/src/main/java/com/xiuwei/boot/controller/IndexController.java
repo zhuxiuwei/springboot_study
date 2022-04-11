@@ -94,4 +94,13 @@ public class IndexController {
         return cityService.getById(id);
     }
 
+    //#64 mybatis测试 - 注解版，也可以混合使用xml。适用sql非常复杂的情况
+    @ResponseBody
+    @PostMapping("/city")
+    public City saveCity(City city){
+        System.out.println(111);
+        cityService.saveCity(city);
+        return city;
+    }
+
 }
