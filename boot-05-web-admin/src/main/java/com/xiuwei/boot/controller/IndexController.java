@@ -1,12 +1,15 @@
 package com.xiuwei.boot.controller;
 
+import com.xiuwei.boot.bean.Department;
 import com.xiuwei.boot.bean.User;
+import com.xiuwei.boot.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.thymeleaf.util.StringUtils;
 
@@ -17,6 +20,9 @@ public class IndexController {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    private DepartmentService departmentService;
 
     /**
      * 来登录页
@@ -67,6 +73,13 @@ public class IndexController {
     public String testSql(){
         Long aLong = jdbcTemplate.queryForObject("select count(*) from tbl_employee", Long.class);
         return aLong + "";
+    }
+
+    //#63 mybatis测试
+    @ResponseBody
+    @GetMapping("/dept")
+    public Department getById(@RequestParam("id") Integer id){
+        return departmentService.getDeptById(id);
     }
 
 }
