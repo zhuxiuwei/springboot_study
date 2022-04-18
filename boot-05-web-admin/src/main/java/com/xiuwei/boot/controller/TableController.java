@@ -14,6 +14,9 @@ public class TableController {
 
     @GetMapping("/dynamic_table")
     public String dynamicTable(){
+        /** #63 mybatis-plus - 从Mysql user表中查数据。 */
+
+
         return "table/dynamic_table";
     }
 
