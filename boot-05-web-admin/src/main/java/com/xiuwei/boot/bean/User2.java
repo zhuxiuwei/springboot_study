@@ -1,10 +1,12 @@
 package com.xiuwei.boot.bean;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 //#63 mybatis-plus CRUD用的测试类
 @Data
+@TableName("user2")    //默认会找和bean同名的表，若table名和bean名不一样，用@TableName标签指定表名 。
 public class User2 {
     private Long id;
     private String name;
