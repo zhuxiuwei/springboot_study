@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -47,5 +49,21 @@ public class TableController {
     @GetMapping("/editable_ table")
     public String editableTable(){
         return "table/editable_table";
+    }
+
+    //#68 删除用户
+    @GetMapping("/user/delete/{id}")
+    public String deleteUser2(@PathVariable("id") Long id,
+                              @RequestParam(value = "pn", defaultValue = "1") Integer pn,
+                              RedirectAttributes redirectAttributes){
+        user2Service.removeById(id);
+
+        /**
+         * 删除后，还要跳转到删除时所在的当前分页，而不是第一页。
+         * 注意RedirectAttributes的使用，之前不了解。 会自动给redirect后面添加参数！
+         */
+        redirectAttributes.addAttribute("pn", pn);
+
+        return "redirect:/dynamic_table";
     }
 }

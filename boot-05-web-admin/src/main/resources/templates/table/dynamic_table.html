@@ -225,6 +225,10 @@
                                         <td th:text="${user.name}"></td>
                                         <td th:text="${user.age}"></td>
                                         <td>[[${user.email}]]</td>
+                                        <td>
+                                            <!-- 语法比较别扭。 带上pn，是为了删除后，依然跳转到删除所在的当前分页，而不是回到第一页。-->
+                                            <a th:href="@{/user/delete/{id}(id=${user.id},pn=${page.current})}" class="btn btn-primary btn-sm" type="button">删除</a>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
