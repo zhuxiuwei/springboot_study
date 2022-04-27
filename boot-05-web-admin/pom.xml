@@ -63,5 +63,20 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.5.1</version>
         </dependency>
+
+        <!-- #69. 整合redis  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <!-- 默认客户端lettuce，也可以切换到jedis客户端
+            需要配合spring配置文件里加上：spring.redis.client-type=jedis
+         -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
+
     </dependencies>
 </project>

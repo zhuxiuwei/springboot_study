@@ -6,6 +6,8 @@ import com.xiuwei.boot.bean.User;
 import com.xiuwei.boot.service.CityService;
 import com.xiuwei.boot.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +30,9 @@ public class IndexController {
 
     @Autowired
     private CityService cityService;
+
+    @Autowired
+    StringRedisTemplate redisTemplate;
 
     /**
      * 来登录页
@@ -63,6 +68,14 @@ public class IndexController {
         //是否登录。
         //TODO: 后续改成拦截器、过滤器
         if(session.getAttribute("loginUser") != null){
+
+            //#70: 从redis读取记录的uri访问次数，展示在首页
+            ValueOperations<String, String> stringStringValueOperations = redisTemplate.opsForValue();
+            String s  = stringStringValueOperations.get("/main.html");
+            String s2 = stringStringValueOperations.get("/sql");
+            model.addAttribute("mainCount", s);
+            model.addAttribute("sqlCount", s2);
+
             return "main";
         }
         else {
