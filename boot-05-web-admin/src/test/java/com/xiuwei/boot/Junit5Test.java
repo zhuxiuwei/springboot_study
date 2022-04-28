@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @SpringBootTest //本注解包含了@ExtendWith({SpringExtension.class}    -- extendWith，类似老版本的runWith。加了这个，这个测试类就能用Spring的功能了，如Autowire
-@DisplayName("Junit5功能测试")
+@DisplayName("#72. Junit5功能测试")
 public class Junit5Test {
 
     @Autowired
