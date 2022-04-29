@@ -69,6 +69,13 @@ public class Junit5Test {
          */
     }
 
+    @DisplayName("#74 测试前置条件")
+    @Test
+    void test1(){
+        Assumptions.assumeTrue(2 == 1, "结果不是true!");
+        System.out.println(111);
+    }
+
     @BeforeEach
     void testBeforeEach(){
         System.out.println("测试要开始了！");
