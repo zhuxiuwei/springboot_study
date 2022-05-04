@@ -10,6 +10,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>xiuwei-hello-spring-boot-starter-autoconfig</artifactId>
+    <dependencies>
+        <!-- 需要加这个依赖，否则@ConfigurationProperties、@Autowired注解都用不了 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
 
 
 </project>
