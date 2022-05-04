@@ -14,6 +14,7 @@
         <module>boot-05-web1</module>
         <module>boot-05-web-admin</module>
         <module>boot-09-features-profile</module>
+        <module>boot-10-custom-starter</module>
     </modules>
 
     <parent>
