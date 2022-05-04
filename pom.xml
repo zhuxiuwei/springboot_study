@@ -13,6 +13,7 @@
         <module>boot-02-helloworld2</module>
         <module>boot-05-web1</module>
         <module>boot-05-web-admin</module>
+        <module>boot-09-features-profile</module>
     </modules>
 
     <parent>
