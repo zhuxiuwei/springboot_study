@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 测试我自己的hello starter（boot-10-custom-starter）。
  */
 @RestController
-public class InvolveHelloController {
+public class InvokeHelloController {
 
     @Autowired
     HelloService helloService;
