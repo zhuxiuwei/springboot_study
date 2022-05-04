@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.ConfigurableEnvironment;
+
+import java.util.Map;
 
 /**
  * 主程序类， 主配置类
@@ -33,5 +36,13 @@ public class MainApplication {
             System.out.println("name=green的Color类没有注册。");
         }
 
+        /**
+         * #82. 打印环境信息
+         */
+        ConfigurableEnvironment environment = run.getEnvironment();
+        Map<String, Object> systemEnvironment = environment.getSystemEnvironment(); //系统环境变量
+        Map<String, Object> systemProperties = environment.getSystemProperties();   //貌似都是jvm的属性
+        System.out.println("systemEnvironment:" + systemEnvironment);
+        System.out.println("systemProperties:" + systemProperties);
     }
 }
