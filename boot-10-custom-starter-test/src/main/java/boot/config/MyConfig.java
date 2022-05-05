@@ -9,6 +9,7 @@ public class MyConfig {
 
     /**
      * 测试自己生成bean并注册到容器，去替换starter生成的bean。
+     * 不是必须的步骤。如果不自己生成，starter会生成（com.xiuwei.hello.auto.HelloServiceAutoConfiguration的@ConditionalOnMissingBean(HelloService.class)）
      */
     @Bean
     public HelloService helloService(){
